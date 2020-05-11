@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Mi Obra</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item-group>
+    <h1>Detalles</h1>
+    <ion-item-divider color="light">Dirección de la Obra</ion-item-divider>
+    <ion-item>
+      <ion-icon name="barcode" item-start></ion-icon>
+      {{ obra.identificador }}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="home" item-start></ion-icon>
+      {{ obra.calle }}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="apps" item-start></ion-icon>
+      {{ obra.colonia }}
+    </ion-item>
+  </ion-item-group>
+
+  <h1>Multimedia</h1>
+  <button ion-button type="button" color="success" block (click)="verAvances()" *ngIf="false">Ver Avances de Mi Obra</button>
+  <button ion-button type="button" color="info" block (click)="verComprobantes()">Ver Comprobantes de Compra</button>
+  <button ion-button type="button" color="danger" block (click)="llamarArq()">Contactar Arquitecto</button>
+</ion-content>

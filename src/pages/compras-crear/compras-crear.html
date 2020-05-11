@@ -1,0 +1,122 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Nueva Compra</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <button ion-button clear float-right color="success" (click)="tomarFoto()">Cargar Comprobante</button>
+
+  <form [formGroup]="frmData" (ngSubmit)="registrarCompra()">
+    <ion-list>
+      <ion-item *ngIf="false">
+        <ion-input name="usuCreacion" type="text" [formControl]="frmData.controls['usuCreacion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Cliente *</small></ion-label>
+        <ion-select name="clienteId" [formControl]="frmData.controls['clienteId']" (ionChange)="onClienteChange(frmData.controls.clienteId.value)">
+          <ion-option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombre }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Obra *</small></ion-label>
+        <ion-select name="obraId" [formControl]="frmData.controls['obraId']">
+          <ion-option *ngFor="let obra of obras" [value]="obra.id">{{ obra.nombre }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label stacked><small>Semana</small></ion-label>
+        <ion-input name="semana" type="number" placeholder="" [formControl]="frmData.controls['semana']"></ion-input>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label stacked><small>Factura</small></ion-label>
+        <ion-input name="factura" type="text" placeholder="" [formControl]="frmData.controls['factura']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Fecha de Compra *</small></ion-label>
+        <!-- <ion-datetime name="fechaCompra" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['fechaCompra']" [dayValues]="diasMes" [monthValues]="mesActual" [yearValues]="anyoActual"></ion-datetime> -->
+        <ion-datetime name="fechaCompra" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['fechaCompra']"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Periodo Inicial *</small></ion-label>
+        <!-- <ion-datetime name="periodoInicial" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['periodoInicial']" [dayValues]="diasLunesMes" [monthValues]="mesActual" [yearValues]="anyoActual"></ion-datetime> -->
+        <ion-datetime name="periodoInicial" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['periodoInicial']"></ion-datetime>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label>Periodo Final</ion-label>
+        <ion-datetime name="periodoFinal" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['periodoFinal']" [dayValues]="proxDomingoDia" [monthValues]="proxDomingoMes" [yearValues]="anyoActual"></ion-datetime>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label stacked><small>Cantidad</small></ion-label>
+        <ion-input name="cantidad" type="number" placeholder="" [formControl]="frmData.controls['cantidad']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Descripción *</small></ion-label>
+        <ion-input name="descripcion" type="text" placeholder="" [formControl]="frmData.controls['descripcion']"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label>Unidad</ion-label>
+        <ion-select name="unidad" [formControl]="frmData.controls['unidad']">
+          <ion-option *ngFor="let unidad of arrUnidad" [value]="unidad">{{ unidad }}</ion-option>
+        </ion-select>
+      </ion-item> -->
+
+      <!-- <ion-item>
+        <ion-label>Frente</ion-label>
+        <ion-select name="frente" [formControl]="frmData.controls['frente']">
+          <ion-option *ngFor="let frente of arrFrente" [value]="frente">{{ frente }}</ion-option>
+        </ion-select>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label stacked><small>Proveedor</small></ion-label>
+        <ion-select name="proveedorId" [formControl]="frmData.controls['proveedorId']">
+          <ion-option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{ proveedor.proveedor }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Subtotal</small></ion-label>
+        <ion-input name="subtotal" type="number" placeholder="" [formControl]="frmData.controls['subtotal']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>IVA (16%)</small></ion-label>
+        <ion-input name="iva" type="number" placeholder="" [formControl]="frmData.controls['iva']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Importe</small></ion-label>
+        <ion-input name="importe" type="number" placeholder="" [formControl]="frmData.controls['importe']"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-input name="costoUnitario" type="number" placeholder="Costo Unitario" [formControl]="frmData.controls['costoUnitario']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="notas" type="text" placeholder="Notas" [formControl]="frmData.controls['notas']"></ion-input>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label stacked><small>Comprobante *</small></ion-label>
+        <ion-label padding-vertical>{{ fotoComprobante }}</ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button type="submit" color="success" block>Guardar Compra</button>
+  </form>
+</ion-content>

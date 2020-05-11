@@ -1,0 +1,36 @@
+
+<ion-header color="dark">
+  <ion-navbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <img src="assets/imgs/aUNsHYvsRf2022OsXjji_untitled.png" width="90%" style="margin-left: 5%"><br>
+
+  <form [formGroup]="frmData" (ngSubmit)="iniciarSesion()">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-input type="text" name="user" [formControl]="frmData.controls['user']" placeholder="Nombre de Usuario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" name="password" [formControl]="frmData.controls['password']" placeholder="Contraseña"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button type="submit" color="success" block>Acceder</button>
+  </form>
+
+</ion-content>
+
+<ion-footer *ngIf="keyboardCheck()">
+  <ion-toolbar>
+    <ion-label text-center><small><i>Lex Software Copyright All Reserved 2018</i></small></ion-label>
+  </ion-toolbar>
+</ion-footer>

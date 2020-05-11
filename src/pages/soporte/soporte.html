@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Soporte
+    </ion-title>
+    <ion-buttons>
+      <button ion-button icon-only menuToggle *ngIf="showMenu"><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="assets/imgs/img_soporte.jpeg" width="100%" style="margin-top: 8%"><br>
+
+  <p text-justify>Tu opinión es importante para nosotros. Si tienes alguna duda o comentario nos gustaria escucharlo.</p>
+
+  <div float-bottom style="margin-top: 12%;">
+    <form [formGroup]="frmData" (ngSubmit)="enviarCorreo()">
+
+      <ion-textarea rows="5" name="descripcion_correo" placeholder="Envíanos tus comentarios..." [formControl]="frmData.controls['descripcion_correo']"></ion-textarea>
+
+      <button ion-button type="submit" float-end color="success" block>Enviar Correo</button>
+    </form>
+  </div>
+
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img src="assets/imgs/user.png" width="50%" style="margin-left: 25%">
+
+  <h1 text-center>{{ cliente.nombre}}</h1>
+  <ion-item-group>
+    <ion-item-divider color="light">Datos de Perfil</ion-item-divider>
+    <ion-item>Calle: {{ cliente.calle }}</ion-item>
+    <ion-item>Colonia: {{ cliente.colonia }}</ion-item>
+    <ion-item>Código Postal: {{ cliente.cp }}</ion-item>
+    <ion-item>Móvil: {{ cliente.movil }}</ion-item>
+    <ion-item>Teléfono: {{ cliente.telefono }}</ion-item>
+  </ion-item-group>
+</ion-content>

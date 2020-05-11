@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Credenciales para Aplicación</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+        <p text-center><small color="danger">Los campos deben tener entre 4 y 10 caracteres. Solo se permite el uso de letras y números</small></p>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="frmData" (ngSubmit)="configurarCredenciales()">
+    <ion-list>
+
+      <ion-label color="danger" float-right><small>* Campos Requeridos</small></ion-label>
+
+      <ion-item *ngIf="false">
+        <ion-input name="usuCreacion" type="text" [formControl]="frmData.controls['usuCreacion']"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="false">
+        <ion-input name="id_user" type="text" [formControl]="frmData.controls['id_user']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Nombre de Usuario *</small></ion-label>
+        <ion-input name="usuario" type="text" placeholder="Nombre de Usuario" [formControl]="frmData.controls['usuario']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Contraseña *</small></ion-label>
+        <ion-input name="pass" type="password" placeholder="Contraseña *" [formControl]="frmData.controls['pass']"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="false">
+        <ion-input name="perfil" type="text" [formControl]="frmData.controls['perfil']"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="false">
+        <ion-input name="fk_vinculada" type="text" [formControl]="frmData.controls['fk_vinculada']"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="false">
+        <ion-input name="origen" type="text" [formControl]="frmData.controls['origen']"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <!--<ion-grid>
+      <ion-row>
+        <ion-col>
+          1 of 3
+        </ion-col>
+        <ion-col>
+          2 of 3
+        </ion-col>
+      </ion-row>
+    </ion-grid>-->
+
+    <button ion-button type="submit" color="success" block>Guardar</button>
+  </form>
+</ion-content>

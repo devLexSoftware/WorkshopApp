@@ -1,0 +1,13 @@
+<ion-tabs>
+    <!--<ion-tab [root]="tabObras" tabTitle="Obras" tabIcon="build"></ion-tab>
+    <ion-tab [root]="tabCompras" tabTitle="Compras" tabIcon="card"></ion-tab>
+    <ion-tab [root]="tabPedidos" tabTitle="Pedidos" tabIcon="cart"></ion-tab>
+    <ion-tab [root]="tabEquipos" tabTitle="Mis Equipos" tabIcon="people"></ion-tab>-->
+
+    <!--<ion-tab [root]="infoTabs[0].rootTab" [tabTitle]="infoTabs[0].titleTab" [tabIcon]="infoTabs[0].iconTab"></ion-tab>
+    <ion-tab [root]="infoTabs[1].rootTab" [tabTitle]="infoTabs[1].titleTab" [tabIcon]="infoTabs[1].iconTab"></ion-tab>
+    <ion-tab [root]="infoTabs[2].rootTab" [tabTitle]="infoTabs[2].titleTab" [tabIcon]="infoTabs[2].iconTab"></ion-tab>
+    <ion-tab [root]="infoTabs[3].rootTab" [tabTitle]="infoTabs[3].titleTab" [tabIcon]="infoTabs[3].iconTab"></ion-tab>-->
+
+    <ion-tab *ngFor="let tab of infoTabs" [root]="tab.rootTab" [tabTitle]="tab.titleTab" [tabIcon]="tab.iconTab"></ion-tab>
+</ion-tabs>

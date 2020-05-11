@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pedidos
+    </ion-title>
+    <ion-buttons>
+      <button ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarPedido()">Nuevo Pedido</button></div>
+
+  <ion-list>
+    <ion-item *ngFor="let obra of obras" (click)="verPedidosObra(obra)">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/instrumentos.png">
+      </ion-thumbnail>
+      <h2>{{ obra.nombre_obra }}</h2>
+      <p>{{ obra.identificador_obra }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<!--
+<ion-content padding>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarPedido()">Nuevo Pedido</button></div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let pedido of pedidos">
+      <ion-item>
+        <ion-thumbnail item-start>
+
+          <ion-icon name="attach" item-start></ion-icon>
+        </ion-thumbnail>
+
+        <h2>{{ pedido.descripcion }}</h2>
+        <p>{{ pedido.obra }}</p>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+-->

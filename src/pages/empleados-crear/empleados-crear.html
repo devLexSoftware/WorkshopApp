@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ titlePage }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="frmData" (ngSubmit)="registrarEmpleado()">
+    <ion-list>
+
+      <ion-label color="danger" float-right><small>* Campos Requeridos</small></ion-label>
+
+      <ion-item *ngIf="false">
+        <ion-input name="id_empleado" type="text" [formControl]="frmData.controls['id_empleado']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Identificador</small></ion-label>
+        <ion-input name="identificador" type="text" placeholder="Identificador" [formControl]="frmData.controls['identificador']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Nombre *</small></ion-label>
+        <ion-input name="nombre" type="text" placeholder="Nombre *" [formControl]="frmData.controls['nombre']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>RFC</small></ion-label>
+        <ion-input name="rfc" type="text" placeholder="RFC" [formControl]="frmData.controls['rfc']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Dirección</small></ion-label>
+        <ion-input name="direccion" type="text" placeholder="Dirección" [formControl]="frmData.controls['direccion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Móvil *</small></ion-label>
+        <ion-input name="movil" type="text" placeholder="Móvil *" [formControl]="frmData.controls['movil']" (keypress)="soloNumeros($event)" maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Telefono</small></ion-label>
+        <ion-input name="telefono" type="text" placeholder="Telefono" [formControl]="frmData.controls['telefono']" (keypress)="soloNumeros($event)" maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Email *</small></ion-label>
+        <ion-input name="email" type="email" placeholder="Email *" [formControl]="frmData.controls['email']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Empresa *</small></ion-label>
+        <ion-input name="empresa" type="text" placeholder="Empresa *" [formControl]="frmData.controls['empresa']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Giro</small></ion-label>
+        <ion-input name="giro" type="text" placeholder="Giro" [formControl]="frmData.controls['giro']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>NSSI</small></ion-label>
+        <ion-input name="nssi" type="text" placeholder="NSSI" [formControl]="frmData.controls['nssi']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Salario</small></ion-label>
+        <ion-input name="salario" type="text" placeholder="Salario" [formControl]="frmData.controls['salario']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Categoría</small></ion-label>
+        <ion-input name="categoria" type="text" placeholder="Categoría" [formControl]="frmData.controls['categoria']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Rol</small></ion-label>
+        <ion-select name="rol" [formControl]="frmData.controls['rol']">
+          <ion-option *ngFor="let rol of roles" [value]="rol">{{ rol }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Notas *</small></ion-label>
+          <ion-textarea rows="5" name="nota" placeholder="Notas *" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['nota']"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button type="submit" color="success" block>{{ textoBtn }}</button>
+  </form>
+</ion-content>

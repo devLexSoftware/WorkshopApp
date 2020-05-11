@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Compras</ion-title>
+        <ion-buttons>
+          <button ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarCompra()">Nueva Compra</button></div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let compra of compras">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/comprar.png">
+        </ion-thumbnail>
+
+        <h2>{{ compra.descripcion_compra }}</h2>
+        <p>{{ compra.nombre_obra }} {{ compra.costo_compra | currency }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="borrarCompra(compra)"><ion-icon name="trash"></ion-icon>Eliminar</button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="info" (click)="verDetalleCompra(compra)"><ion-icon name="eye"></ion-icon>Detalle</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

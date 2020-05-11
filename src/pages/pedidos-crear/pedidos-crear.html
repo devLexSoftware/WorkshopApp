@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Nuevo Pedido
+    </ion-title>
+    <ion-buttons>
+      <button ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="frmData" (ngSubmit)="registrarPedido()">
+    <ion-list>
+
+      <ion-label color="danger" float-right><small>* Campos Requeridos</small></ion-label>
+
+      <ion-item *ngIf="false">
+        <ion-input name="usuCreacion" type="text" [formControl]="frmData.controls['usuCreacion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Obra *</small></ion-label>
+        <ion-select name="fk_obras" [formControl]="frmData.controls['fk_obra']">
+          <ion-option *ngFor="let obra of obras" [value]="obra.id_obra">{{ obra.identificador_obra }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Frente *</small></ion-label>
+        <ion-select name="frente" [formControl]="frmData.controls['frente']">
+          <ion-option *ngFor="let frente of arrFrente" [value]="frente">{{ frente }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Descripción *</small></ion-label>
+        <ion-textarea rows="5" name="descripcion" placeholder="Descripción" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['descripcion']"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Estatus *</small></ion-label>
+        <ion-select name="estatus" [formControl]="frmData.controls['estatus']">
+          <ion-option *ngFor="let estatus of arrEstatus" [value]="estatus">{{ estatus }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button type="submit" color="success" block>Enviar Pedido</button>
+  </form>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Clientes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarCliente()">Nuevo Cliente</button></div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let cliente of clientes">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/grupo.png">
+        </ion-thumbnail>
+
+        <h2>{{ cliente.nombre }}</h2>
+        <p>{{ cliente.nota }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="info" (click)="configurarCredenciales(cliente)"><ion-icon name="construct"></ion-icon>Acceso</button>
+        <button ion-button color="secondary" (click)="editarCliente(cliente)"><ion-icon name="create"></ion-icon>Editar</button>
+        <button ion-button color="danger" (click)="borrarCliente(cliente)"><ion-icon name="trash"></ion-icon>Eliminar</button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="info" (click)="verDetalle(cliente)"><ion-icon name="eye"></ion-icon>Detalle</button>
+        <button ion-button color="success" (click)="llamarCliente(cliente)"><ion-icon name="call"></ion-icon>Llamar</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

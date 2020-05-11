@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Mis Obras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item-group>
+    <ion-item-divider color="light">Obras en Construcción</ion-item-divider>
+    <ion-item *ngFor="let obra of obras" (click)="verInfoObra(obra)">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/instrumentos.png">
+      </ion-thumbnail>
+
+      <h2>{{ obra.nombre }} <small>{{ obra.identificador }}</small></h2>
+      <p>{{ obra.calle }} {{ obra.numInt }} {{ obra.colonia }}</p>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

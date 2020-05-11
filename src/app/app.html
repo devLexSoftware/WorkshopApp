@@ -1,0 +1,20 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <!-- <button [class.hide]="mostrarOpcn" ion-item (click)="abrirPagina(tabsP)">Obras</button> -->
+      <button ion-item (click)="abrirPagina(tabsP)"><ion-icon name="home" item-start></ion-icon> Página Principal</button>
+      <button ion-item (click)="abrirPagina(clientesP)"><ion-icon name="person" item-start></ion-icon> Clientes</button>
+      <button ion-item (click)="abrirPagina(proveedoresP)"><ion-icon name="git-network" item-start></ion-icon> Proveedores</button>
+      <button ion-item (click)="abrirPagina(empleadosP)"><ion-icon name="person" item-start></ion-icon> Empleados</button>
+      <button ion-item (click)="abrirPagina(soporteP)"><ion-icon name="hammer" item-start></ion-icon> Soporte</button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

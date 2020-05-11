@@ -1,0 +1,29 @@
+<!--
+  Generated template for the ObraInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Información de la Obra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="assets/imgs/instrumentos.png" width="50%" style="margin-left: 25%">
+  <h1 text-center>{{ obra.nombre }}</h1>
+  <p style="font-size: 18px;"><b>Id: </b>  {{ obra.identificador_obra }}</p>
+  <p style="font-size: 18px;"><b>Calle: </b> {{ obra.calle_obra }} </p>
+  <p style="font-size: 18px;"><b>Nº Ext. </b> {{ obra.numExt_obra }} </p>
+  <p style="font-size: 18px;"><b>Nº Int. </b> {{ obra.numInt_obra }} </p>
+  <p style="font-size: 18px;"><b>Colonia: </b> {{ obra.colonia_obra }} </p>
+  <p style="font-size: 18px;"><b>C.P. </b> {{ obra.cp_obra}} </p>
+  <p style="font-size: 18px;"><b>Ciudad: </b> {{ obra.ciudad_obra}} </p>
+  <p style="font-size: 18px;"><b>Municipio: </b> {{ obra.municipio_obra }} </p>
+  <p style="font-size: 18px;"><b>Cliente: </b> {{ obra.nombre_cliente }} </p>
+  <p style="font-size: 18px;"><b>Equipo: </b> {{ obra.nombre_grupo }} </p>
+</ion-content>

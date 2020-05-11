@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Empleados
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarEmpleado()">Nuevo Empleado</button></div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let empleado of empleados">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/grupo.png">
+        </ion-thumbnail>
+
+        <h2>{{ empleado.nombre }}</h2>
+        <p>{{ empleado.nota }}</p>
+
+        <!-- <button ion-button clear item-end>Llamar</button> -->
+        <!-- <button ion-button icon-only item-end (click)="llamarCliente(cliente)"><ion-icon name="call"></ion-icon></button> -->
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="info" (click)="configurarCredenciales(empleado)"><ion-icon name="construct"></ion-icon>Acceso</button>
+        <button ion-button color="secondary" (click)="editarEmpleado(empleado)"><ion-icon name="create"></ion-icon>Editar</button>
+        <button ion-button color="danger" (click)="borrarEmpleado(empleado)"><ion-icon name="trash"></ion-icon>Eliminar</button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="info" (click)="verDetalle(empleado)"><ion-icon name="eye"></ion-icon>Detalle</button>
+        <button ion-button color="success" (click)="llamarEmpleado(empleado)"><ion-icon name="call"></ion-icon>Llamar</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ titlePage }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="frmData" (ngSubmit)="registrarCliente()">
+    <ion-list>
+
+      <ion-label color="danger" float-right><small>* Campos Requeridos</small></ion-label>
+
+      <ion-item *ngIf="false">
+        <ion-input name="id_cliente" type="text" [formControl]="frmData.controls['id_cliente']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Identificador *</small></ion-label>
+        <ion-input name="identificador" type="text" placeholder="Identificador" [formControl]="frmData.controls['identificador']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Nombre *</small></ion-label>
+        <ion-input name="nombre" type="text" placeholder="Nombre *" [formControl]="frmData.controls['nombre']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>RFC</small></ion-label>
+        <ion-input name="rfc" type="text" placeholder="RFC" [formControl]="frmData.controls['rfc']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Calle</small></ion-label>
+        <ion-input name="calle" type="text" placeholder="Calle" [formControl]="frmData.controls['calle']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Número Exterior</small></ion-label>
+        <ion-input name="noExt" type="text" placeholder="Número Exterior" [formControl]="frmData.controls['noExt']" (keypress)="soloNumeros($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Número Interior</small></ion-label>
+        <ion-input name="noInt" type="text" placeholder="Número Interior" [formControl]="frmData.controls['noInt']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Colonia</small></ion-label>
+        <ion-input name="colonia" type="text" placeholder="Colonia" [formControl]="frmData.controls['colonia']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>C.P.</small></ion-label>
+        <ion-input name="cp" type="text" placeholder="C.P." [formControl]="frmData.controls['cp']" (keypress)="soloNumeros($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Ciudad</small></ion-label>
+        <ion-input name="ciudad" type="text" placeholder="Ciudad" [formControl]="frmData.controls['ciudad']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Municipio</small></ion-label>
+        <ion-input name="municipio" type="text" placeholder="Municipio" [formControl]="frmData.controls['municipio']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Empresa *</small></ion-label>
+        <ion-input name="empresa" type="text" placeholder="Empresa *" [formControl]="frmData.controls['empresa']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Email *</small></ion-label>
+        <ion-input name="email" type="email" placeholder="Email *" [formControl]="frmData.controls['email']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Móvil *</small></ion-label>
+        <ion-input name="movil" type="text" placeholder="Móvil *" [formControl]="frmData.controls['movil']" (keypress)="soloNumeros($event)" maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Telefono</small></ion-label>
+        <ion-input name="telefono" type="text" placeholder="Telefono" [formControl]="frmData.controls['telefono']" (keypress)="soloNumeros($event)" maxlength="10"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label><sup>*</sup> Nota</ion-label>
+        <ion-input name="nota" type="text" placeholder="Nota" [formControl]="frmData.controls['nota']"></ion-input>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Nota</small></ion-label>
+          <ion-textarea rows="5" name="nota" placeholder="Nota" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['nota']"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button type="submit" color="success" block>{{ textoBtn }}</button>
+  </form>
+</ion-content>

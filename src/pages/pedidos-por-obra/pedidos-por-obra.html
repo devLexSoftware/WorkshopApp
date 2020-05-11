@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Pedidos de la Obra</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h6>Seleccione el estatus del pedido...</h6>
+  <form [formGroup]="frmData">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked><small>Estatus</small></ion-label>
+        <ion-select name="estatus" [formControl]="frmData.controls['estatus']" (ionChange)="onChange(frmData.controls.estatus.value)">
+          <ion-option *ngFor="let estatus of arrEstatus" [value]="estatus">{{ estatus }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

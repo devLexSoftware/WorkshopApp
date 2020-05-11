@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Voucher</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item-group>
+    <h1>Comprobantes</h1>
+    <ion-item-divider color="light">Lista de Comprobantes de la Obra</ion-item-divider>
+    <ion-item *ngFor="let semana of semanas" (click)="verFotosPeriodo(semana)">
+      <ion-thumbnail item-start>
+        <img [src]="semana.fotoPeriodo">
+      </ion-thumbnail>
+      <h2>Periodo de Compras</h2>
+      <p> {{ semana.fechInicial }} </p>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

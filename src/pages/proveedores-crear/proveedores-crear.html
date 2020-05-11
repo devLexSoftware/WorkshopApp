@@ -1,0 +1,90 @@
+<!--
+  Generated template for the ProveedoresCrearPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ titlePage }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="frmData" (ngSubmit)="registrarProveedor()">
+    <ion-list>
+
+      <ion-label color="danger" float-right><small>* Campos Requeridos</small></ion-label>
+
+      <ion-item *ngIf="false">
+        <ion-input name="id_proveedor" type="text" [formControl]="frmData.controls['id_proveedor']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Identificador</small></ion-label>
+        <ion-input name="identificador" type="text" placeholder="Identificador" [formControl]="frmData.controls['identificador']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Empresa *</small></ion-label>
+        <ion-input name="empresa" type="text" placeholder="Empresa *" [formControl]="frmData.controls['empresa']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Nombre *</small></ion-label>
+        <ion-input name="proveedor" type="text" placeholder="Nombre *" [formControl]="frmData.controls['proveedor']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Descripción *</small></ion-label>
+        <ion-input name="descripcion" type="text" placeholder="Descripción *" [formControl]="frmData.controls['descripcion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>RFC</small></ion-label>
+        <ion-input name="rfc" type="text" placeholder="RFC" [formControl]="frmData.controls['rfc']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Importe</small></ion-label>
+        <ion-input name="importe" type="text" placeholder="Importe" [formControl]="frmData.controls['importe']" (keypress)="soloNumeros($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Unidad</small></ion-label>
+        <ion-input name="unidad" type="text" placeholder="Unidad" [formControl]="frmData.controls['unidad']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Contacto 1 *</small></ion-label>
+        <ion-input name="contacto1" type="text" placeholder="Contacto 1 *" [formControl]="frmData.controls['contacto1']" (keypress)="soloNumeros($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Contacto 2 *</small></ion-label>
+        <ion-input name="contacto2" type="text" placeholder="Contacto 2" [formControl]="frmData.controls['contacto2']" (keypress)="soloNumeros($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Email *</small></ion-label>
+        <ion-input name="email" type="text" placeholder="Email *" [formControl]="frmData.controls['email']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Dirección</small></ion-label>
+        <ion-input name="direccion" type="text" placeholder="Dirección" [formControl]="frmData.controls['direccion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked *ngIf="showLabels"><small>Comentario</small></ion-label>
+        <ion-textarea rows="5" name="comentario" placeholder="Comentario" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['comentario']"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button type="submit" color="success" block>{{ textoBtn }}</button>
+  </form>
+</ion-content>

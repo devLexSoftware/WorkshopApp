@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Voucher Gallery</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item-group>
+    <h1>Galeria</h1>
+    <ion-item-divider color="light">Periodo: {{ periodo }}</ion-item-divider>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 col-md-3 *ngFor="let image of periodoImgs">
+          <img [src]="image.foto" (click)="verImagen(image)">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item-group>
+</ion-content>

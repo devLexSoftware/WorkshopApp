@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Información</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img src="assets/imgs/comprar.png" width="30%" style="margin-left: 35%">
+
+  <h1 text-center>{{ compra.descripcion_compra }}</h1>
+  <p style="font-size: 18px;"><b>Fecha: </b> {{ compra.fecha_compra | date : "dd/LL/y" }} </p>
+  <p style="font-size: 18px;"><b>Periodo Inicial: </b>  {{ compra.fechI_compra }}</p>
+  <p style="font-size: 18px;"><b>Periodo Final: </b>  {{ compra.fechF_compra }}</p>
+  <p style="font-size: 18px;"><b>Semana: </b>  {{ compra.semana_compra }}</p>
+  <p style="font-size: 18px;"><b>Monto: </b> {{ compra.importe_compra | currency }} <small>(Incluye IVA)</small></p>
+  <p style="font-size: 18px;"><b>Obra: </b> {{ compra.nombre_obra }} </p>
+</ion-content>

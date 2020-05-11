@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Obras</ion-title>
+
+    <ion-buttons>
+      <button ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="registrarObra()">Nueva Obra</button></div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let obra of obras">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/instrumentos.png">
+        </ion-thumbnail>
+
+        <h2>{{ obra.nombre_obra }}</h2>
+        <p>{{ obra.identificador_obra }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editarObra(obra)"><ion-icon name="create"></ion-icon>Editar</button>
+        <button ion-button color="danger" (click)="borrarObra(obra)"><ion-icon name="trash"></ion-icon>Eliminar</button>
+      </ion-item-options>
+
+      <ion-item-options side="right">
+        <button ion-button color="info" (click)="verInfo(obra)"><ion-icon name="eye"></ion-icon>Detalle</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

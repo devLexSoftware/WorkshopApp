@@ -1,0 +1,45 @@
+<!--
+  Generated template for the ProveedoresPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Proveedores</ion-title>
+    <ion-buttons>
+      <button ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarProveedor()">Nuevo Proveedor</button></div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let proveedor of proveedores">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/camion-de-reparto.png">
+        </ion-thumbnail>
+
+        <h2>{{ proveedor.proveedor }}</h2>
+        <p>{{ proveedor.empresa }}</p>
+
+        <!-- <button ion-button clear item-end>Llamar</button> -->
+        <!-- <button ion-button icon-only item-end (click)="llamarProveedor(proveedor)"><ion-icon name="call"></ion-icon></button> -->
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editarProveedor(proveedor)"><ion-icon name="create"></ion-icon>Editar</button>
+        <button ion-button color="danger" (click)="borrarProveedor(proveedor)"><ion-icon name="trash"></ion-icon>Eliminar</button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="info" (click)="verDetalle(proveedor)"><ion-icon name="eye"></ion-icon>Detalle</button>
+        <button ion-button color="success" (click)="llamarProveedor(proveedor)"><ion-icon name="call"></ion-icon>Llamar</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
