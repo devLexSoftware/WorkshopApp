@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { PedidosCrearPage, PedidosPorObraPage } from '../index.pages';
 import { ObrasService } from '../../providers/obras/obras';
+import { PedidosService } from '../../providers/pedidos/pedidos';
+
 
 @Component({
   selector: 'page-pedidos',
@@ -16,19 +18,23 @@ export class PedidosPage
   (
     private navCtrl: NavController,
     private alertCtrl: AlertController,
-    private obrasService: ObrasService
+    private obrasService: ObrasService,
+    private pedidosService: PedidosService
+
   )
   {
   }
 
   ionViewWillEnter(): void
   {
-    this.obrasService.getVwInfoObrasSelect().subscribe(
+    // this.obrasService.getVwInfoObrasSelect().subscribe(
+    this.pedidosService.getPedidosbyCampo("admin","admin").subscribe(
+
       (data) =>
       {
         if (data["error"] == false)
         {
-          this.obras = data["data"];
+          this.pedidos = data["data"];
         }
         else
         {
@@ -44,10 +50,10 @@ export class PedidosPage
     this.navCtrl.push(PedidosCrearPage);
   }
 
-  verPedidosObra(obra)
+  verPedidosObra(pedido)
   {
     // console.log(obra);
-    this.navCtrl.push(PedidosPorObraPage, { "obra": obra });
+    this.navCtrl.push(PedidosPorObraPage, { "pedido": pedido });
   }
 
   showAlert(title, subtitle)

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Pedidos
+      Avances
     </ion-title>
     <ion-buttons>
       <button ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
@@ -10,16 +10,17 @@
 </ion-header>
 
 <ion-content padding>
-  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarPedido()">Nuevo Pedido</button></div>
+  <div padding-horizontal><button ion-button clear float-right color="success" (click)="agregarAvance()">Registrar Avance</button></div>
 
   <ion-list>
-    <ion-item *ngFor="let pedido of pedidos" (click)="verPedidosObra(pedido)">
+    <ion-item *ngFor="let avance of avances" (click)="verAvance(avance)">
       <ion-thumbnail item-start>
         <img src="assets/imgs/instrumentos.png">
       </ion-thumbnail>
-      <h2>Obra: {{ pedido.nombre }}</h2>
-      <p>Pedido: {{ pedido.descripcion }}</p>
-      <p>Estado: {{ pedido.estado }}</p>
+      <h2>Obra: {{ avance.nombre }}</h2>      
+      <p>Fecha: {{ avance.estado }}</p>
+      <p>Usuario: {{ avance.estado }}</p>
+
     </ion-item>
   </ion-list>
 </ion-content>

@@ -44,4 +44,15 @@ export class ObrasService
 
     return this.http.post(URL_SERVICIOS + "Obra/eliminar_obra", JSON.stringify(postData));
   }
+
+  getObrasByUsers(campo, valor)
+  {
+    let url = URL_SERVICIOS + "Obra/select_obras_empleado";
+
+    let postData = new FormData();
+    postData.append("campo", campo);
+    postData.append("valor", valor);
+
+    return this.http.post(url, postData); 
+  }
 }

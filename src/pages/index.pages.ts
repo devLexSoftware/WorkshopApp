@@ -30,3 +30,6 @@ export { ProveedoresPage } from './proveedores/proveedores';
 export { ProveedoresCrearPage } from './proveedores-crear/proveedores-crear';
 export { SoportePage } from './soporte/soporte';
 export { TabsControllerPage } from './tabs-controller/tabs-controller';
+export { PedidosEmpleadoPage } from './pedidos-empleado/pedidos-empleado';
+export { AvancesPage } from './avances/avances';
+export { AvanceCrearPage } from './avance-crear/avance-crear';

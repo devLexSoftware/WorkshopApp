@@ -41,20 +41,41 @@ export class PedidosCrearPage
 
   ionViewWillEnter(): void
   {
-    this.obrasService.getVwInfoObrasSelect().subscribe(
-      (data) =>
-      {
-        if (data["error"] == false)
+    if(this.usersService.logeedUserObj.perfil == "admin")
+    {
+      this.obrasService.getVwInfoObrasSelect().subscribe(
+        (data) =>
         {
-          this.obras = data["data"];
-        }
-        else
+          if (data["error"] == false)
+          {
+            this.obras = data["data"];
+          }
+          else
+          {
+            this.showAlert("Ups!", "No hay obras registradas", false);
+          }
+        },
+        (error) => { this.showAlert("¡Error 5!", "Error WS Obras", true); }
+      );
+    }
+    else if(this.usersService.logeedUserObj.perfil == "empleado")
+    {
+      this.obrasService.getObrasByUsers("fk_empleado",this.usersService.logeedUserObj.fk_vinculada).subscribe(
+        (data) =>
         {
-          this.showAlert("Ups!", "No hay obras registradas", false);
-        }
-      },
-      (error) => { this.showAlert("¡Error 5!", "Error WS Obras", true); }
-    );
+          if (data["error"] == false)
+          {
+            this.obras = data["data"];
+          }
+          else
+          {
+            this.showAlert("Ups!", "No hay obras registradas", false);
+          }
+        },
+        (error) => { this.showAlert("¡Error 5!", "Error WS Obras", true); }
+      );
+    }
+    
   }
 
   registrarPedido()

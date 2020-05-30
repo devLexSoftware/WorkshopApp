@@ -9,9 +9,13 @@ import { Camera } from '@ionic-native/camera';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 
+import { FilePath } from '@ionic-native/file-path/ngx';
+
+
 import
 {
-  AccessConfigPage,
+  AccessConfigPage,      
+  AvancesPage,
   ClienteInfoPage,
   ClientesPage,
   ClientesCrearPage,
@@ -35,6 +39,7 @@ import
   ObrasPage,
   ObrasDelClientePage,
   PedidosPage,
+  PedidosEmpleadoPage,
   PedidosCrearPage,
   PedidosPorObraPage,
   PerfilInfoClientePage,
@@ -42,7 +47,8 @@ import
   ProveedoresPage,
   ProveedoresCrearPage,
   SoportePage,
-  TabsControllerPage
+  TabsControllerPage,
+  AvanceCrearPage
 } from '../pages/index.pages';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -57,12 +63,15 @@ import { ProveedoresService } from '../providers/proveedores/proveedores';
 import { CotizacionesService } from '../providers/cotizaciones/cotizaciones';
 import { EquiposService } from '../providers/equipos/equipos';
 import { PedidosService } from '../providers/pedidos/pedidos';
+import { AvancesProvider } from '../providers/avances/avances';
 
 @NgModule({
   declarations:
   [
     MyApp,
     AccessConfigPage,
+    AvancesPage,
+    AvanceCrearPage,
     ClienteInfoPage,
     ClientesPage,
     ClientesCrearPage,
@@ -86,6 +95,7 @@ import { PedidosService } from '../providers/pedidos/pedidos';
     ObrasPage,
     ObrasDelClientePage,
     PedidosPage,
+    PedidosEmpleadoPage,
     PedidosCrearPage,
     PedidosPorObraPage,
     PerfilInfoClientePage,
@@ -112,6 +122,8 @@ import { PedidosService } from '../providers/pedidos/pedidos';
   entryComponents: [
     MyApp,
     AccessConfigPage,
+    AvancesPage,
+    AvanceCrearPage,
     ClienteInfoPage,
     ClientesPage,
     ClientesCrearPage,
@@ -135,6 +147,7 @@ import { PedidosService } from '../providers/pedidos/pedidos';
     ObrasPage,
     ObrasDelClientePage,
     PedidosPage,
+    PedidosEmpleadoPage,
     PedidosCrearPage,
     PedidosPorObraPage,
     PerfilInfoClientePage,
@@ -160,7 +173,9 @@ import { PedidosService } from '../providers/pedidos/pedidos';
     ProveedoresService,
     CotizacionesService,
     EquiposService,
-    PedidosService
+    PedidosService,
+    AvancesProvider,
+    FilePath
   ]
 })
 export class AppModule {}

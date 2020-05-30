@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams, AlertController, NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PedidosService } from '../../providers/pedidos/pedidos';
 
 @IonicPage()
 @Component(
@@ -10,16 +11,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class PedidosPorObraPage
 {
-  obra: any = {};
+  pedido: any = {};
   frmData: FormGroup;
   arrEstatus: string[] = ["Realizado", "Aprobado", "Rechazado", "Pedido", "Entregado/Recibido"];
 
   constructor(
     private navParams: NavParams,
     private frmBuilder: FormBuilder,
+    private pedidosService: PedidosService,
+    private alertCtrl: AlertController,
+    public navCtrl: NavController,
+
   )
   {
-    this.obra = this.navParams.get("obra");
+    this.pedido = this.navParams.get("pedido");
 
     //Formulario
     this.frmData = this.frmBuilder.group({
@@ -34,7 +39,35 @@ export class PedidosPorObraPage
 
   onChange(estatus)
   {
-    // console.log(this.obra.id_obra);
-    // console.log(estatus);
+    let estado = estatus;    
+    this.pedidosService.cambiarEstado(estatus, this.pedido.id).subscribe((data) =>
+      {
+
+        if (data["error"] == false)
+        { this.showAlert("¡Correcto!", data["msj"], true); }
+        else
+        { this.showAlert("¡Ups!", data["msj"], true); }
+      },
+      (error) => { console.log(error); });
+  }
+
+
+  showAlert(title, subtitle, regresar)
+  {
+    const alert = this.alertCtrl.create(
+    {
+      title: title,
+      subTitle: subtitle,
+      buttons: [
+      {
+        text: 'Ok',
+        role: 'ok',
+        handler: data => {
+          if (regresar)
+          { this.navCtrl.pop(); }
+        }
+      }]
+    });
+    alert.present();
   }
 }

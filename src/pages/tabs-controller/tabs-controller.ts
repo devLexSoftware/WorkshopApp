@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
   ObrasPage, ComprasPage, PedidosPage, EquiposPage,
-  SoportePage, PerfilInfoClientePage, ObrasDelClientePage } from '../index.pages';
+  SoportePage, PerfilInfoClientePage, ObrasDelClientePage, PedidosEmpleadoPage, AvancesPage } from '../index.pages';
 import { UsersService } from '../../providers/users/users';
 
 @Component({
@@ -49,6 +49,12 @@ export class TabsControllerPage
       this.infoTabs.push({"rootTab": ObrasDelClientePage, "titleTab": "Mis Obras", "iconTab": "build"});
       this.infoTabs.push({"rootTab": PerfilInfoClientePage, "titleTab": "Mi Perfil", "iconTab": "person"});
       this.infoTabs.push({"rootTab": SoportePage, "titleTab": "Soporte", "iconTab": "hammer"});
+    }
+    else if (this.usersService.logeedUserPerfil == "empleado")
+    {
+      this.infoTabs.push({"rootTab": PedidosEmpleadoPage, "titleTab": "Pedidos", "iconTab": "cart"});
+      this.infoTabs.push({"rootTab": AvancesPage, "titleTab": "Avances", "iconTab": "cart"});
+
     }
   }
 
