@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { AvancesProvider} from '../../providers/avances/avances';
 import { AccessConfigPage} from '../index.pages';
 import { UsersService } from '../../providers/users/users';
 import { AvanceCrearPage } from '../avance-crear/avance-crear';
+import { AvanceInfoPage } from '../avance-info/avance-info';
 
 
 /**
@@ -26,7 +27,8 @@ export class AvancesPage {
     private alertCtrl: AlertController,
     private navParams: NavParams,
     private avancesService: AvancesProvider,
-    private UsersService: UsersService,    
+    private UsersService: UsersService,
+    public menuCtrl: MenuController    
     ) {
   }
 
@@ -58,6 +60,7 @@ export class AvancesPage {
     }
     else if(this.UsersService.logeedUserObj.perfil == "empleado")
     {
+      this.menuCtrl.enable(false);
       this.avancesService.getAvancesbyCampo(this.UsersService.logeedUserObj.fk_vinculada).subscribe(
         (data) =>
         {
@@ -100,5 +103,10 @@ export class AvancesPage {
     });
     alert.present();
   }
+
+  verAvance(avance){
+    this.navCtrl.push(AvanceInfoPage, { "avance": avance });
+  }
+
 
 }

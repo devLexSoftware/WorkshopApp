@@ -27,4 +27,10 @@ export class AvancesProvider {
     return this.http.post(url, postData);
   }
 
+  registrarAvance(data)
+  {
+    debugger;
+    return this.http.post(URL_SERVICIOS + "Avance/registrar_avance", JSON.stringify(data));
+  }
+
 }

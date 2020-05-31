@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController, Platform, LoadingController } from 'ionic-angular';
 import { ObrasService } from '../../providers/obras/obras';
 import { AvancesProvider} from '../../providers/avances/avances';
 import { UsersService } from '../../providers/users/users';
@@ -7,6 +7,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera';
 
 import { FilePath } from '@ionic-native/file-path/ngx';
+
+
+
 
 /**
  * Generated class for the AvanceCrearPage page.
@@ -24,9 +27,10 @@ export class AvanceCrearPage {
 
   obras: any[] = [];
   frmData: FormGroup;
-  images: any []  = [];
+  images: any[] = [];
   image: string = ""; //Variable para almacenar el string base64 de la imagen tomada
   fotoComprobante = "No se ha adjuntado fotografía";
+  loading: any;
 
 
 
@@ -40,8 +44,8 @@ export class AvanceCrearPage {
     private obrasService: ObrasService,
     private camera: Camera,
     private platform: Platform,    
-    private filePath: FilePath
-
+    private filePath: FilePath,
+    private loadingController: LoadingController
 
     ) {
       this.frmData = this.frmBuilder.group({
@@ -51,8 +55,8 @@ export class AvanceCrearPage {
         semana: [null],
         periodoInicial: [null],
         periodoFinal: [null],
-        comentario: [null]
-
+        comentario: [null],
+        imagesArray:[null]
       });
 
   }  
@@ -96,6 +100,55 @@ export class AvanceCrearPage {
     
   }
 
+  async showLoader() {
+    this.loading = await this.loadingController.create({      
+      content: 'Registrando avances...',                  
+    });
+    await this.loading.present();   
+  }
+  
+
+  // showLoader() {
+  //   this.loading = this.loadingController.create({
+  //     content: 'Espere por favor...'
+  //   });
+  // }
+
+  hideLoader(){
+    this.loading.dismiss();
+  }
+
+
+  registrarAvance()
+  {        
+    let obraId = this.frmData.controls.fk_obra.value;
+    let avance = this.frmData.controls.avance.value;
+    let semana = this.frmData.controls.semana.value;
+    let periodoInicial = this.frmData.controls.periodoInicial.value;
+    let periodoFinal = this.frmData.controls.periodoFinal.value;    
+    let comentario = this.frmData.controls.comentario.value;
+
+    if (obraId != "" && obraId != "" && avance != "" && semana != "" && periodoInicial != "" && periodoFinal != "" && comentario != "")
+    {
+
+      this.showLoader();
+      this.frmData.controls.imagesArray.setValue(this.images);     
+      debugger;
+      this.avancesService.registrarAvance(this.frmData.value).subscribe((data) =>
+      {
+        console.log(data["msj"]);
+        this.hideLoader();
+        if (data["error"] == false)
+        { this.showAlert("¡Correcto!", data["msj"], true); }
+        else
+        { this.showAlert("¡Ups!", data["msj"], false); }
+      },
+      (error) => { this.hideLoader();console.log(error); });
+    }
+    else
+    { this.hideLoader(); this.showAlert("¡Ups!", "Campos incompletos para el registro del avance", false); }
+  }
+
   onChange(periodoInicial)
   {    
     let fecha = new Date(periodoInicial.value);
@@ -121,37 +174,23 @@ export class AvanceCrearPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       targetWidth: 1000,
       targetHeight: 1000,
-      quality: 50
+      quality: 100       
     };
 
+    this.camera.getPicture(options).then(imageData =>
+    {
+      // this.images.push(`data:image/jpeg;base64,${imageData}`);
+      this.image = `data:image/jpeg;base64,${imageData}`;
+      this.fotoComprobante = "Fotografía adjunta";
+      // this.source = imageData;
 
-    this.camera.getPicture(options).then(imagePath => {
-      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-          this.filePath.resolveNativePath(imagePath)
-              .then(filePath => {
-                  let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-                  let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));                  
-              });
-      } else {
-          var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-          var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);          
-      }
-
-      this.images.push({name:currentName, path:correctPath, filePath:this.filePath})
-  });
-
-    // this.camera.getPicture(options).then(imageData =>
-    // {
-    //   // // this.images.push(`data:image/jpeg;base64,${imageData}`);
-    //   // this.image = `data:image/jpeg;base64,${imageData}`;
-    //   // this.fotoComprobante = "Fotografía adjunta";
-    //   // // this.source = imageData;
-
-    //   // this.images.push(this.image)
-    // }).catch(error => { console.error( error ); });
+      this.images.push(this.image)
+    }).catch(error => { console.error( error ); });
   }
 
-  
+  deleteImage(imgEntry, position) {
+    this.images.splice(position, 1);     
+  }
 
   showAlert(title, subtitle, regresar)
   {

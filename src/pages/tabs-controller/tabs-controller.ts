@@ -52,8 +52,8 @@ export class TabsControllerPage
     }
     else if (this.usersService.logeedUserPerfil == "empleado")
     {
-      this.infoTabs.push({"rootTab": PedidosEmpleadoPage, "titleTab": "Pedidos", "iconTab": "cart"});
-      this.infoTabs.push({"rootTab": AvancesPage, "titleTab": "Avances", "iconTab": "cart"});
+      this.infoTabs.push({"rootTab": PedidosEmpleadoPage, "titleTab": "Pedidos", "iconTab": "cube"});
+      this.infoTabs.push({"rootTab": AvancesPage, "titleTab": "Avances", "iconTab": "document"});
 
     }
   }

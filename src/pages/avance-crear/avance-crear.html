@@ -12,7 +12,7 @@
 <ion-content padding>
   <button ion-button clear float-right color="success" (click)="tomarFoto()">Cargar Comprobante</button>
 
-  <form [formGroup]="frmData" (ngSubmit)="registrarPedido()">
+  <form [formGroup]="frmData" (ngSubmit)="registrarAvance()">
     <ion-list>
 
       <ion-label color="danger" float-right><small>* Campos Requeridos</small></ion-label>
@@ -57,17 +57,18 @@
 
     </ion-list>
 
-    <button ion-button type="submit" color="success" block>Enviar Pedido</button>
-  </form>
+    <ion-list>
+      <ion-item *ngFor="let image of images; index as pos">    
+        <ion-thumbnail slot="start">
+          <img [src]="image">
+        </ion-thumbnail>   
+        <button ion-button clear item-end  (click)="deleteImage(img, pos)">Borrar</button>
+     
+      </ion-item>
+    </ion-list>
 
-  <ion-list>
-    <ion-item *ngFor="let img of images; index as pos" text-wrap>
-      <ion-thumbnail slot="start">
-        <ion-img [src]="img.path"></ion-img>
-      </ion-thumbnail>
-      
-    </ion-item>
-  </ion-list>
+    <button ion-button type="submit" color="success" block>Registrar Avance</button>
+  </form>    
 </ion-content>
 
 <!-- <ion-content padding>

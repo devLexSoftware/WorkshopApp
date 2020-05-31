@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, MenuController } from 'ionic-angular';
 import { PedidosCrearPage, PedidosPorObraPage } from '../index.pages';
 import { ObrasService } from '../../providers/obras/obras';
 import { PedidosService } from '../../providers/pedidos/pedidos';
@@ -19,7 +19,8 @@ export class PedidosPage
     private navCtrl: NavController,
     private alertCtrl: AlertController,
     private obrasService: ObrasService,
-    private pedidosService: PedidosService
+    private pedidosService: PedidosService,
+    public menuCtrl: MenuController    
 
   )
   {

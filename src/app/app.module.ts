@@ -15,6 +15,7 @@ import { FilePath } from '@ionic-native/file-path/ngx';
 import
 {
   AccessConfigPage,      
+  AvanceInfoPage,
   AvancesPage,
   ClienteInfoPage,
   ClientesPage,
@@ -38,6 +39,7 @@ import
   ObraInfoClientePage,
   ObrasPage,
   ObrasDelClientePage,
+  PedidoInfoPage,
   PedidosPage,
   PedidosEmpleadoPage,
   PedidosCrearPage,
@@ -70,6 +72,7 @@ import { AvancesProvider } from '../providers/avances/avances';
   [
     MyApp,
     AccessConfigPage,
+    AvanceInfoPage,
     AvancesPage,
     AvanceCrearPage,
     ClienteInfoPage,
@@ -94,6 +97,7 @@ import { AvancesProvider } from '../providers/avances/avances';
     ObraInfoClientePage,
     ObrasPage,
     ObrasDelClientePage,
+    PedidoInfoPage,
     PedidosPage,
     PedidosEmpleadoPage,
     PedidosCrearPage,
@@ -122,6 +126,7 @@ import { AvancesProvider } from '../providers/avances/avances';
   entryComponents: [
     MyApp,
     AccessConfigPage,
+    AvanceInfoPage,
     AvancesPage,
     AvanceCrearPage,
     ClienteInfoPage,
@@ -146,6 +151,7 @@ import { AvancesProvider } from '../providers/avances/avances';
     ObraInfoClientePage,
     ObrasPage,
     ObrasDelClientePage,
+    PedidoInfoPage,
     PedidosPage,
     PedidosEmpleadoPage,
     PedidosCrearPage,

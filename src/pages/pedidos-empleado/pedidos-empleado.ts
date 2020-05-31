@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { PedidosService } from '../../providers/pedidos/pedidos';
 import { UsersService } from '../../providers/users/users';
-import { PedidosCrearPage } from '../index.pages'
+import { PedidosCrearPage, PedidoInfoPage } from '../index.pages';
 
 
 /**
@@ -26,13 +26,16 @@ export class PedidosEmpleadoPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public pedidosService: PedidosService,
-    private UsersService: UsersService
+    private UsersService: UsersService,
+    public menuCtrl: MenuController    
+
     )
   {
   }
 
   ionViewWillEnter(): void
   {
+    this.menuCtrl.enable(false);
     this.pedidosService.getPedidosbyCampo("empleado", this.UsersService.logeedUserObj.fk_vinculada).subscribe(
       (data) =>
       {
@@ -66,6 +69,12 @@ export class PedidosEmpleadoPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  verPedidos(pedido)
+  {
+    // console.log(obra);
+    this.navCtrl.push(PedidoInfoPage, { "pedido": pedido });
   }
 
 }
